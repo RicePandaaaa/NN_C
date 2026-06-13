@@ -21,7 +21,7 @@ bool   matrix_set(Matrix *matrix, int row, int col, double value);
 
 /* Methods for pre-filling */
 void   matrix_fill(Matrix *m, double value);
-void   matrix_rand(Matrix *m, double min, double max);
+void   matrix_rand(Matrix *m, double lower, double upper);
 
 /* Methods for math operations */
 Matrix *matrix_add(const Matrix *a, const Matrix *b);

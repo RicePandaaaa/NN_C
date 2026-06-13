@@ -140,3 +140,59 @@ bool matrix_set(Matrix *m, int row, int col, double value) {
     m->data[row * m->cols + col] = value;
     return true;
 }
+
+/*
+ * Pre-filling methods
+ */
+
+void matrix_fill(Matrix *m, double value) {
+    /*
+     * Parameters:
+     *   m: matrix to fill with value "val"
+     *   value: value to fill matrix "m" with
+     * 
+     * Returns:
+     *   N/A
+     */
+
+     // Edge case: m is invalid
+     if (m == NULL) {
+        return;
+     }
+
+     // Fill the matrix
+     int mat_size = m->rows * m->cols;
+     for (int index = 0; index < mat_size; index++) {
+        m->data[index] = value;
+     }
+}
+
+
+void matrix_rand(Matrix *m, double lower, double upper) {
+    /*
+     * Parameters:
+     *   m: matrix to fill with random values
+     *   lower: lower bound (included) of random values
+     *   upper: upper bound (included) of random values
+     * 
+     * Returns:
+     *   N/A
+     */
+
+    // Edge case: m is invalid
+    if (m == NULL) {
+        return;
+    }
+
+    // Edge case: lower is not actually the lower bound
+    if (lower >= upper) {
+        return;
+    }
+
+    // Fill with random values
+    int mat_size = m->rows * m->cols;
+    for (int index = 0; index < mat_size; index++) {
+        double rand_value = ((double) rand() / RAND_MAX) * (upper - lower) + lower;
+        m->data[index] = rand_value;
+    }
+}
